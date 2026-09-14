@@ -1,0 +1,19 @@
+[project]
+name = "paimon-os"
+version = "0.1.0"
+description = "Paimon assistant to help tralevers in their journey through Teyvat."
+readme = "README.md"
+authors = [
+    { name = "WhiteWaxula", email = "whitewaxula@proton.me" }
+]
+requires-python = ">=3.14"
+dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.12.10,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.16.7",
+]

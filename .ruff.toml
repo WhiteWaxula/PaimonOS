@@ -1,0 +1,12 @@
+line-length = 100
+
+[lint]
+select = ["ALL"]
+ignore = ["D203", "D213"]
+
+
+[format]
+indent-style = "space"
+quote-style = "double"
+docstring-code-format = true
+docstring-code-line-length = 100
