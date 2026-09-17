@@ -19,5 +19,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: paimon_os-wheel
           path: dist/paimon_os-*-py3-*-*.whl
+          archive: false
