@@ -1,0 +1,23 @@
+name: CD
+on: [push]
+jobs:
+  wheel:
+    name: Upload wheel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          version: "0.12.15"
+          enable-cache: true
+
+      - name: Generate wheel
+        run: uv build --wheel
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: paimon_os-wheel
+          path: dist/paimon_os-*-py3-*-*.whl
