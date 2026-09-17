@@ -1,0 +1,38 @@
+# Configuration file for `prek`, a git hook framework written in Rust.
+# See https://prek.j178.dev for more information.
+#:schema https://www.schemastore.org/prek.json
+
+[[repos]]
+repo = "builtin"
+hooks = [
+    { id = "trailing-whitespace" },
+    { id = "end-of-file-fixer" },
+    { id = "check-added-large-files" },
+    { id = "check-yaml" },
+    { id = "check-toml" },
+    { id = "no-commit-to-branch", args = ["--branch", "main", "--branch", "dev"]},
+    { id = "check-merge-conflict" },
+    { id = "detect-private-key" }
+]
+
+[[repos]]
+repo = "https://github.com/pycqa/isort"
+rev = "9.0.1"
+hooks = [
+    { id = "isort" },
+]
+
+[[repos]]
+repo = "https://github.com/astral-sh/ruff-pre-commit"
+rev = "v0.16.8"
+hooks = [
+    { id = "ruff-check" },
+    { id = "ruff-format" },
+]
+
+[[repos]]
+repo = "https://github.com/astral-sh/uv-pre-commit"
+rev = "0.12.15"
+hooks = [
+    { id = "uv-lock" },
+]
