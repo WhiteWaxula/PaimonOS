@@ -22,7 +22,7 @@ class ArtifactRarity(IntEnum):
 
         :return: The full and correct name of the artifact rarity.
         """
-        return f"{self.value}⭐"
+        return "⭐" * self.value
 
     def __str__(self) -> str:
         """Retrieve human-readable representation of the artifact rarity.
