@@ -4,6 +4,9 @@ line-length = 100
 select = ["ALL"]
 ignore = ["D203", "D213"]
 
+[lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]
+
 
 [format]
 indent-style = "space"
