@@ -25,7 +25,7 @@ def test_rarity_definition(rarity: ArtifactRarity, value: int) -> None:
     :param rarity: The artifact rarity to be tested.
     :param value: The expected rarity value.
     """
-    assert rarity.value == value, f"Rarity {rarity} takes value != {value}"
+    assert rarity.value == value
 
 
 @pytest.mark.parametrize(

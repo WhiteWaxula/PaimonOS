@@ -4,9 +4,11 @@ Copyright (c) 2026 WhiteWaxula
 SPDX-License-Identifier: MIT
 """
 
+from dataclasses import FrozenInstanceError
+
 import pytest
 
-from paimon_os.gacha.artifact.core import ArtifactStatType
+from paimon_os.gacha.artifact.core import ArtifactStat, ArtifactStatType
 
 
 @pytest.mark.parametrize(
@@ -58,3 +60,18 @@ def test_stat_type_display_name(stat_type: ArtifactStatType, display_name: str) 
     """
     assert stat_type.display_name == display_name
     assert str(stat_type) == display_name
+
+
+def test_stat_inmutability() -> None:
+    """Asserts that artifact stats are inmutable."""
+    stat = ArtifactStat(ArtifactStatType.CRIT_DMG, 10.5)
+
+    with pytest.raises(FrozenInstanceError):
+        stat.value = 20.5
+
+
+def test_stat_display_name() -> None:
+    """Asserts artifact stats have the expected display name."""
+    stat = ArtifactStat(ArtifactStatType.CRIT_RATE, 10.5)
+    assert stat.display_name == "CRIT Rate=10.5000"
+    assert str(stat) == "CRIT Rate=10.5000"
