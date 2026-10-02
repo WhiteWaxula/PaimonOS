@@ -73,7 +73,7 @@ def test_artifact_describe() -> None:
 def test_crit_value_no_crit() -> None:
     """Asserts crit value is 0.0 when the artifact has no crit."""
     artifact = create_artifact(main_stat=ArtifactStat("HP", 10), sub_stats=())
-    assert artifact.crit_value == 0.0
+    assert artifact.crit_value == pytest.approx(0.0)
 
 
 def test_crit_value_main_stat_only() -> None:
