@@ -16,15 +16,8 @@ hooks = [
 ]
 
 [[repos]]
-repo = "https://github.com/pycqa/isort"
-rev = "9.0.1"
-hooks = [
-    { id = "isort" },
-]
-
-[[repos]]
 repo = "https://github.com/astral-sh/ruff-pre-commit"
-rev = "v0.16.8"
+rev = "v0.16.10"
 hooks = [
     { id = "ruff-check" },
     { id = "ruff-format" },
@@ -32,7 +25,7 @@ hooks = [
 
 [[repos]]
 repo = "https://github.com/astral-sh/uv-pre-commit"
-rev = "0.12.15"
+rev = "0.12.22"
 hooks = [
     { id = "uv-lock" },
 ]
