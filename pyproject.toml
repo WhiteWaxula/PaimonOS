@@ -1,6 +1,6 @@
 [project]
 name = "paimon-os"
-version = "0.1.0"
+version = "0.2.0"
 description = "Paimon assistant to help tralevers in their journey through Teyvat."
 readme = "README.md"
 authors = [
