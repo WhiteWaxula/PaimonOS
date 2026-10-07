@@ -2,10 +2,10 @@ line-length = 100
 
 [lint]
 select = ["ALL"]
-ignore = ["D203", "D213", "COM812"]
+ignore = ["D203", "D213", "COM812", "TRY003" , "EM101", "EM102"]
 
 [lint.per-file-ignores]
-"tests/**/*.py" = ["S101"]
+"tests/**/*.py" = ["S101", "S311"]
 
 
 [format]
