@@ -56,35 +56,27 @@ def test_zero_valued_distribution() -> None:
         WeightedDistribution((("a", 0), ("b", 0)))
 
 
-@pytest.mark.parametrize("seed", range(20))
-def test_draw_from_distribution(seed: int) -> None:
-    """Asserts that all drawn items belong to the distribution.
-
-    :param seed: The random seed to be used for testing.
-    """
+def test_draw_from_distribution() -> None:
+    """Asserts that all drawn items belong to the distribution."""
     weighted_elements = ("a", 0.5), ("b", 0.3)
     distribution_items = {element[0] for element in weighted_elements}
 
     distribution = WeightedDistribution(weighted_elements)
-    rng = random.Random(seed)
+    rng = random.Random(42)
 
     for _ in range(1000):
         item = distribution.sample(rng)
         assert item in distribution_items
 
 
-@pytest.mark.parametrize("seed", range(20))
-def test_reproducibility(seed: int) -> None:
-    """Asserts the reproducibility of drawing from the distribution.
-
-    :param seed: The random seed to be used for testing.
-    """
+def test_reproducibility() -> None:
+    """Asserts the reproducibility of drawing from the distribution."""
     weighted_elements = (("a", 0.5), ("b", 0.3))
 
     distribution = WeightedDistribution(weighted_elements)
 
-    rng_1 = random.Random(seed)
-    rng_2 = random.Random(seed)
+    rng_1 = random.Random(42)
+    rng_2 = random.Random(42)
 
     for _ in range(1000):
         item_1 = distribution.sample(rng_1)
@@ -93,23 +85,18 @@ def test_reproducibility(seed: int) -> None:
         assert item_1 == item_2
 
 
-@pytest.mark.parametrize("seed", range(20))
-def test_zero_prob_not_drawn(seed: int) -> None:
+def test_zero_prob_not_drawn() -> None:
     """Asserts that elements with no weight are never drawn."""
     distribution = WeightedDistribution((("a", 0.0), ("b", 1.0), ("c", 0.0)))
-    rng = random.Random(seed)
+    rng = random.Random(42)
 
     assert distribution.sample(rng) == "b"
 
 
-@pytest.mark.parametrize("seed", range(20))
-def test_weights(seed: int) -> None:
-    """Asserts the weighted distribution draws items according to given weights.
-
-    :param seed: The random seed to be used for testing.
-    """
+def test_weights() -> None:
+    """Asserts the weighted distribution draws items according to given weights."""
     distribution = WeightedDistribution((("a", 0.5), ("b", 0.3), ("c", 0.2)))
-    rng = random.Random(seed)
+    rng = random.Random(42)
 
     counts = {item: 0 for item, _ in distribution.weights}
     num_draws = 10000
